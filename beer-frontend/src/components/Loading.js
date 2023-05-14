@@ -6,7 +6,7 @@ const  Loading = () => {
 
 
   return (
-<Lottie style={{ width: '300px', margin: 'auto' }} animationData={barrel} />
+<Lottie style={{ width: '300px' }} animationData={barrel} />
 
   )
 }

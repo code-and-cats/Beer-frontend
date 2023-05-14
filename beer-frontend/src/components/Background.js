@@ -10,7 +10,7 @@ object-fit: contain;
 const Background = () => {
   return (
     <VideoWrapper>
-    <video className="vid" width="100%" src={backgroundVid} autoPlay loop muted />
+    <video src={backgroundVid} autoPlay loop muted />
     </VideoWrapper>
   )
 }
