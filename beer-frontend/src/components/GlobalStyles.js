@@ -1,15 +1,33 @@
 import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
+body {
+  margin: 0;
+}
+
   h1 {
-    font-family: 'Sigmar', cursive;
+    font-family: 'Fira Sans Condensed', sans-serif;
     font-size: 42px;
+    margin-bottom: 0;
   }
 
-  p, h2
+  h2, h3, h4
   {
-    font-family: 'Biryani', sans-serif;
+    font-family: 'Fira Sans Condensed', sans-serif;
     font-size: 12px;
+    margin-bottom: 0;
+  }
+
+  p, li {
+    font-family: 'Istok Web', sans-serif;
+  }
+
+  h2 {
+    font-size: 12px;
+  }
+
+  h3 {
+    font-size: 18px;
   }
 
   a {
@@ -19,7 +37,6 @@ const GlobalStyles = createGlobalStyle`
     font-size: 12px;
     font-weight: 800;
   }
-
 `
 
 export default GlobalStyles

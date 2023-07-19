@@ -1,7 +1,61 @@
-import React, { useState, useEffect } from "react";
-import { styled } from "styled-components";
-import Loading from "./Loading"
+import React, { useState, useEffect } from 'react'
+import { styled } from 'styled-components'
+import { NavLink } from 'react-router-dom'
+import Loading from './Loading'
 
+const AllBeers = () => {
+  const [beers, setBeers] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [page, setPage] = useState(1)
+  const [perPage, setPerPage] = useState(5)
+  const BASE_URL = `http://localhost:8080/beers?page=${page}&perPage=${perPage}`
+
+  useEffect(() => {
+    fetch(BASE_URL)
+      .then((response) => response.json())
+      .then((data) => {
+        setBeers(data.body)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+      .finally(() => {
+        setLoading(false)
+      })
+  }, [page, perPage])
+
+  const handlePreviousPage = () => {
+    if (page > 1) {
+      setPage(page - 1)
+    }
+  }
+
+  const handleNextPage = () => {
+    setPage(page + 1)
+  }
+
+  if (loading) return <Loading />
+  return (
+    <StyledMain>
+      <StyledWrapper>
+        <h1>All beers</h1>
+        {beers.map((beer) => (
+          <div key={beer.name}>
+            <NavLink to={`/beers/${beer._id}`}>{beer.name}</NavLink>
+            <BeerStyle>{beer.style}</BeerStyle>
+          </div>
+        ))}
+        <StyledPagination>
+          <button onClick={handlePreviousPage} disabled={page === 1}>
+            Previous
+          </button>
+          <span>Page: {page}</span>
+          <button onClick={handleNextPage}>Next</button>
+        </StyledPagination>
+      </StyledWrapper>
+    </StyledMain>
+  )
+}
 
 const StyledMain = styled.main`
   position: absolute;
@@ -12,51 +66,26 @@ const StyledMain = styled.main`
 `
 
 const StyledWrapper = styled.div`
-max-width: 600px;
-margin: auto;
-background-color: rgba(255, 255, 255, 0.5); 
-padding: 10px;
-border-radius: 8px;
+  max-width: 600px;
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 10px;
+  border-radius: 8px;
 `
 
+const StyledPagination = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
 
-const AllBeers = () => {
-  const [beers, setBeers] = useState([]);
-  const [loading, setLoading] = useState(true)
-  const BASE_URL = 'https://project-mongo-api-rrnpfp2gjq-lz.a.run.app/beers';
+  button {
+    margin: 0 5px;
+  }
+`
+const BeerStyle = styled.h2`
+  font-size: 16px;
+  margin-top: 0;
+`
 
-  useEffect(() => {
-    fetch(BASE_URL)
-      .then((response) => response.json())
-      .then((data) => {
-        const beersArray = Object.keys(data).map((key) => data[key]);
-        setBeers(beersArray);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => {
-        setLoading(false);
-      })
-      }, [])
-  
-      if (loading)
-      return (
-       <Loading />
-      )
-  return (
-    <StyledMain>
-      <StyledWrapper>
-      <h1>Beer API</h1>
-      {beers[1].map((beer) => (
-        <div key={beer.name}>
-          <h2>{beer.style}</h2>
-          <p>{beer.name}</p>
-        </div>
-      ))}
-    </StyledWrapper>
-    </StyledMain>
-  );
-};
-
-export default AllBeers;
+export default AllBeers
