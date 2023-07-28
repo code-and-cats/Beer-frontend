@@ -8,7 +8,7 @@ const AllBeers = () => {
   const [loading, setLoading] = useState(true)
   const [page, setPage] = useState(1)
   const [perPage, setPerPage] = useState(5)
-  const BASE_URL = `http://localhost:8080/beers?page=${page}&perPage=${perPage}`
+  const BASE_URL = `https://project-mongo-api-rrnpfp2gjq-lz.a.run.app/beers?page=${page}&perPage=${perPage}`
 
   useEffect(() => {
     fetch(BASE_URL)
