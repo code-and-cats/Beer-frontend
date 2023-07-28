@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import { styled } from 'styled-components'
 import { useParams } from 'react-router-dom'
+import Popup from './Popup'
 
 const SingleBeer = () => {
   const { id } = useParams()
   const [beer, setBeer] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [isShowing, setIsShowing] = useState(false)
+  const [activePopup, setActivePopup] = useState(null)
 
   useEffect(() => {
     const fetchBeerDetails = async () => {
@@ -53,8 +56,26 @@ const SingleBeer = () => {
     abv
   } = beer
 
+  const handlePopupClick = (title, content) => {
+    setActivePopup({ title, content })
+    setIsShowing(true)
+  }
+
+  const handleClosePopup = () => {
+    setIsShowing(false)
+  }
+
   return (
     <StyledMain>
+      {isShowing && (
+        <Overlay onClick={handleClosePopup}>
+          <Popup
+            title={activePopup.title}
+            content={activePopup.content}
+            setIsShowing={handleClosePopup}
+          />
+        </Overlay>
+      )}
       <StyledWrapper>
         <NavLink to="/beers">Back to all beers</NavLink>
         <HeaderWrapper>
@@ -70,31 +91,42 @@ const SingleBeer = () => {
           </IBUABVWrapper>
         </HeaderWrapper>
         <TextWrapper>
-          <SubHeading>Impression</SubHeading>
-          <p>{impression}</p>
+          <SubHeading
+            onClick={() => handlePopupClick('Impression', impression)}>
+            Impression
+          </SubHeading>
+          <SubHeading onClick={() => handlePopupClick('Mouthfeel', mouthfeel)}>
+            Mouthfeel
+          </SubHeading>
+          <SubHeading
+            onClick={() => handlePopupClick('Appearance', appearance)}>
+            Appearance
+          </SubHeading>
+          <SubHeading onClick={() => handlePopupClick('Aroma', aroma)}>
+            Aroma
+          </SubHeading>
+          <SubHeading onClick={() => handlePopupClick('Flavor', flavor)}>
+            Flavor
+          </SubHeading>
+          <SubHeading onClick={() => handlePopupClick('Comments', comments)}>
+            Comments
+          </SubHeading>
+          <SubHeading onClick={() => handlePopupClick('History', history)}>
+            History
+          </SubHeading>
+          <SubHeading
+            onClick={() => handlePopupClick('Ingredients', ingredients)}>
+            Ingredients
+          </SubHeading>
         </TextWrapper>
         <TextWrapper>
-          <SubHeading>Mouthfeel</SubHeading>
-          <p>{mouthfeel}</p>
+          <h3>Examples</h3>
+          <ul>
+            {examples.map((example, index) => (
+              <li key={index}>{example}</li>
+            ))}
+          </ul>
         </TextWrapper>
-        <SubHeading>Appearance</SubHeading>
-        <p>{appearance}</p>
-        <h3>Aroma</h3>
-        <p>{aroma}</p>
-        <h3>Flavor</h3>
-        <p>{flavor}</p>
-        <h3>Comments</h3>
-        <p>{comments}</p>
-        <h3>History</h3>
-        <p>{history}</p>
-        <h3>Ingredients</h3>
-        <p>{ingredients}</p>
-        <h3>Examples</h3>
-        <ul>
-          {examples.map((example, index) => (
-            <li key={index}>{example}</li>
-          ))}
-        </ul>
       </StyledWrapper>
     </StyledMain>
   )
@@ -154,6 +186,15 @@ const StyledWrapper = styled.div`
   background-color: rgba(255, 255, 255, 0.5);
   padding: 10px;
   border-radius: 8px;
+`
+
+const Overlay = styled.div`
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  z-index: 2;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.3);
 `
 
 export default SingleBeer
