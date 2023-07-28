@@ -48,7 +48,9 @@ const SingleBeer = () => {
     comments,
     history,
     ingredients,
-    examples
+    examples,
+    ibu,
+    abv
   } = beer
 
   return (
@@ -58,10 +60,22 @@ const SingleBeer = () => {
         <HeaderWrapper>
           <BeerName>{name}</BeerName>
           <BeerStyle>{style}</BeerStyle>
+          <IBUABVWrapper>
+            <BeerStyle>
+              IBU: {ibu.low} - {ibu.high}
+            </BeerStyle>
+            <BeerStyle>
+              ABV: {abv.low} - {abv.high}
+            </BeerStyle>
+          </IBUABVWrapper>
         </HeaderWrapper>
         <TextWrapper>
           <SubHeading>Impression</SubHeading>
           <p>{impression}</p>
+        </TextWrapper>
+        <TextWrapper>
+          <SubHeading>Mouthfeel</SubHeading>
+          <p>{mouthfeel}</p>
         </TextWrapper>
         <SubHeading>Appearance</SubHeading>
         <p>{appearance}</p>
@@ -69,8 +83,6 @@ const SingleBeer = () => {
         <p>{aroma}</p>
         <h3>Flavor</h3>
         <p>{flavor}</p>
-        <h3>Mouthfeel</h3>
-        <p>{mouthfeel}</p>
         <h3>Comments</h3>
         <p>{comments}</p>
         <h3>History</h3>
@@ -114,6 +126,14 @@ const BeerStyle = styled.h2`
   font-size: 12px;
   margin-top: 0;
 `
+
+const IBUABVWrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+  padding-top: 1rem;
+`
+
 const SubHeading = styled.h3`
   font-size: 18px;
   color: #a62f03;
@@ -127,6 +147,9 @@ const TextWrapper = styled.div`
 
 const StyledWrapper = styled.div`
   max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   margin: auto;
   background-color: rgba(255, 255, 255, 0.5);
   padding: 10px;
