@@ -34,7 +34,7 @@ body {
     color: #006335;
     text-decoration: none;
     font-family: 'Biryani', sans-serif;
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 800;
   }
 `

@@ -84,8 +84,9 @@ const StyledPagination = styled.div`
   }
 `
 const BeerStyle = styled.h2`
-  font-size: 16px;
+  font-size: 12px;
   margin-top: 0;
+  margin-bottom: 1rem;
 `
 
 export default AllBeers
