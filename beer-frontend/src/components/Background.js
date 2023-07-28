@@ -1,38 +1,17 @@
 import React from 'react'
 import backgroundVid from './background.mp4'
+import Lottie from 'lottie-react'
 import { styled } from 'styled-components'
+import bubbles from './Lotties/bubbles.json'
 
 const VideoWrapper = styled.video`
-  object-fit: cover;
+  max-width: 100vw;
+  object-fit: contain;
   object-position: center;
+  overflow: hidden;
 `
 const Background = () => {
-  return <VideoWrapper src={backgroundVid} autoPlay loop muted />
+  return <Lottie style={{ height: '100wh' }} animationData={bubbles} />
 }
 
 export default Background
-
-/* import styled, { keyframes } from 'styled-components'
-
-const GradientAnimation = keyframes`
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-  `
-export const Background = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
-  background: linear-gradient(-60deg, #f3e834, #dc7d51, #ff6634);
-  background-size: 400% 400%;
-  animation: ${GradientAnimation} 10s ease infinite;
-`
- */
