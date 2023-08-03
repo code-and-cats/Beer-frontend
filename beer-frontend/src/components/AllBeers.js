@@ -34,9 +34,13 @@ const AllBeers = () => {
     setPage(page + 1)
   }
 
-  if (loading) return <Loading />
   return (
     <StyledMain>
+      {loading ? (
+        <LottieDiv>
+          <Loading />
+        </LottieDiv>
+      ) : null}
       <StyledWrapper>
         <h1>All beers</h1>
         {beers.map((beer) => (
@@ -87,6 +91,12 @@ const BeerStyle = styled.h2`
   font-size: 12px;
   margin-top: 0;
   margin-bottom: 1rem;
+`
+
+const LottieDiv = styled.div`
+  position: relative;
+  margin: auto;
+  z-index: 3;
 `
 
 export default AllBeers

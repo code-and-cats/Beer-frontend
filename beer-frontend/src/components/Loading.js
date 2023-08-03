@@ -1,15 +1,15 @@
-import React from "react";
+import React from 'react'
 import Lottie from 'lottie-react'
-import barrel from './Lotties/barrel.json'
+import loadingvid from './Lotties/loading.json'
 
-const  Loading = () => {
-
-
+const Loading = () => {
   return (
-<Lottie style={{ width: '300px' }} animationData={barrel} />
-
+    <Lottie
+      style={{ width: '300px', margin: 'auto' }}
+      animationData={loadingvid}
+      loop
+    />
   )
 }
-
 
 export default Loading

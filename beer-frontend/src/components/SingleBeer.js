@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import { styled } from 'styled-components'
 import { useParams } from 'react-router-dom'
+import Loading from './Loading'
 import Popup from './Popup'
 
 const SingleBeer = () => {
@@ -31,10 +32,6 @@ const SingleBeer = () => {
 
     fetchBeerDetails()
   }, [id])
-
-  if (loading) {
-    return <div>Loading...</div>
-  }
 
   if (!beer) {
     return <div>Beer not found</div>
@@ -78,6 +75,11 @@ const SingleBeer = () => {
       )}
       <StyledWrapper>
         <NavLink to="/beers">Back to all beers</NavLink>
+        {loading ? (
+          <LottieDiv>
+            <Loading />
+          </LottieDiv>
+        ) : null}
         <HeaderWrapper>
           <BeerName>{name}</BeerName>
           <BeerStyle>{style}</BeerStyle>
@@ -195,6 +197,12 @@ const Overlay = styled.div`
   z-index: 2;
   top: 0;
   background-color: rgba(0, 0, 0, 0.3);
+`
+
+const LottieDiv = styled.div`
+  position: relative;
+  margin: auto;
+  z-index: 3;
 `
 
 export default SingleBeer

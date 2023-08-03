@@ -8,6 +8,7 @@ const VideoWrapper = styled.video`
   object-fit: cover;
   object-position: center;
   overflow: hidden;
+  z-index: -2;
 
   @media (min-width: 1624px) {
     width: 140vw;
