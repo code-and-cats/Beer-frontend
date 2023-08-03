@@ -37,6 +37,7 @@ body {
     font-family: 'Biryani', sans-serif;
     font-size: 16px;
     font-weight: 800;
+    cursor: pointer;
   }
 `
 
