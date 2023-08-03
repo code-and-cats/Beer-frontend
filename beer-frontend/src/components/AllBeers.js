@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { styled } from 'styled-components'
 import { NavLink } from 'react-router-dom'
 import Loading from './Loading'
+import forward from './hopsrightwhite.svg'
+import back from './hopsleftwhite.svg'
 
 const AllBeers = () => {
   const [beers, setBeers] = useState([])
@@ -42,20 +44,28 @@ const AllBeers = () => {
         </LottieDiv>
       ) : null}
       <StyledWrapper>
-        <NavLink to="/">Back to main</NavLink>
+        <NavWrapper>
+          <NavIcon src={back} alt="back to main page" />
+          <NavLink to="/">hop back to homepage</NavLink>
+        </NavWrapper>
         <StyledH1>All beers</StyledH1>
-        {beers.map((beer) => (
-          <div key={beer.name}>
-            <NavLink to={`/beers/${beer._id}`}>{beer.name}</NavLink>
-            <BeerStyle>{beer.style}</BeerStyle>
-          </div>
-        ))}
+        <SubHeadingWrapper>
+          {beers.map((beer) => (
+            <div key={beer.name}>
+              <NavLink to={`/beers/${beer._id}`}>{beer.name}</NavLink>
+              <BeerStyle>{beer.style}</BeerStyle>
+            </div>
+          ))}
+        </SubHeadingWrapper>
         <StyledPagination>
-          <button onClick={handlePreviousPage} disabled={page === 1}>
-            Previous
-          </button>
+          <Icon
+            src={back}
+            onClick={handlePreviousPage}
+            disabled={page === 1}
+            alt="back"
+          />
           <p>Page: {page}</p>
-          <button onClick={handleNextPage}>Next</button>
+          <Icon src={forward} onClick={handleNextPage} alt="forward" />
         </StyledPagination>
       </StyledWrapper>
     </StyledMain>
@@ -71,7 +81,6 @@ const StyledMain = styled.main`
 `
 
 const StyledH1 = styled.h1`
-  margin-top: 10px;
   font-size: 40px;
   margin-bottom: 16px;
 `
@@ -84,6 +93,18 @@ const StyledWrapper = styled.div`
   border-radius: 8px;
 `
 
+const NavWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+`
+
+const SubHeadingWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+`
+
 const StyledPagination = styled.div`
   display: flex;
   align-items: center;
@@ -94,6 +115,7 @@ const StyledPagination = styled.div`
     margin: 0 5px;
   }
 `
+
 const BeerStyle = styled.h2`
   font-size: 12px;
   margin-top: 0;
@@ -104,6 +126,18 @@ const LottieDiv = styled.div`
   position: relative;
   margin: auto;
   z-index: 3;
+`
+
+const NavIcon = styled.img`
+  width: 25px;
+  cursor: pointer;
+`
+
+// TODO: disabled styling change, hover styling change, button??
+const Icon = styled.img`
+  width: 25px;
+  margin: 10px;
+  cursor: pointer;
 `
 
 export default AllBeers
