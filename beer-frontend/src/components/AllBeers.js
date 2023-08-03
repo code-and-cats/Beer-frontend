@@ -9,7 +9,7 @@ const AllBeers = () => {
   const [beers, setBeers] = useState([])
   const [loading, setLoading] = useState(true)
   const [page, setPage] = useState(1)
-  const [perPage, setPerPage] = useState(5)
+  const [perPage, setPerPage] = useState(8)
   const BASE_URL = `https://project-mongo-api-rrnpfp2gjq-lz.a.run.app/beers?page=${page}&perPage=${perPage}`
 
   useEffect(() => {
