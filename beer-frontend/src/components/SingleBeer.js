@@ -173,6 +173,7 @@ const IBUABVWrapper = styled.div`
 const SubHeading = styled.h3`
   font-size: 18px;
   color: #a62f03;
+  cursor: pointer;
 `
 
 const TextWrapper = styled.div`
