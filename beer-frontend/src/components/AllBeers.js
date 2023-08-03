@@ -38,17 +38,17 @@ const AllBeers = () => {
 
   return (
     <StyledMain>
-      {loading ? (
-        <LottieDiv>
-          <Loading />
-        </LottieDiv>
-      ) : null}
       <StyledWrapper>
         <NavWrapper>
           <NavIcon src={back} alt="back to main page" />
           <NavLink to="/">hop back to homepage</NavLink>
         </NavWrapper>
         <StyledH1>All beers</StyledH1>
+        {loading ? (
+          <LottieDiv>
+            <Loading />
+          </LottieDiv>
+        ) : null}
         <SubHeadingWrapper>
           {beers.map((beer) => (
             <div key={beer.name}>
