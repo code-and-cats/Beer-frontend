@@ -42,7 +42,7 @@ const AllBeers = () => {
         </LottieDiv>
       ) : null}
       <StyledWrapper>
-        <h1>All beers</h1>
+        <StyledH1>All beers</StyledH1>
         {beers.map((beer) => (
           <div key={beer.name}>
             <NavLink to={`/beers/${beer._id}`}>{beer.name}</NavLink>
@@ -53,7 +53,7 @@ const AllBeers = () => {
           <button onClick={handlePreviousPage} disabled={page === 1}>
             Previous
           </button>
-          <span>Page: {page}</span>
+          <p>Page: {page}</p>
           <button onClick={handleNextPage}>Next</button>
         </StyledPagination>
       </StyledWrapper>
@@ -69,11 +69,17 @@ const StyledMain = styled.main`
   bottom: 0;
 `
 
+const StyledH1 = styled.h1`
+  margin-top: 0;
+  font-size: 40px;
+  margin-bottom: 16px;
+`
+
 const StyledWrapper = styled.div`
   max-width: 600px;
   margin: auto;
   background-color: rgba(255, 255, 255, 0.5);
-  padding: 10px;
+  padding: 12px 24px;
   border-radius: 8px;
 `
 
