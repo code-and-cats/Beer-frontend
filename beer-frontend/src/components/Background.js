@@ -10,8 +10,8 @@ const VideoWrapper = styled.video`
   overflow: hidden;
   z-index: -2;
 
-  @media (min-width: 1624px) {
-    width: 140vw;
+  @media (min-width: 740px) {
+    width: 100vw;
 `
 const Background = () => {
   return <VideoWrapper src={backgroundVid} autoPlay loop muted />
