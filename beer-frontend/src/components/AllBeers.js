@@ -86,11 +86,17 @@ const StyledH1 = styled.h1`
 `
 
 const StyledWrapper = styled.div`
-  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 375px;
   margin: auto;
   background-color: rgba(255, 255, 255, 0.5);
   padding: 12px 24px;
   border-radius: 8px;
+
+  @media (min-width: 740px) {
+    max-width: 600px;
 `
 
 const NavWrapper = styled.div`
@@ -103,6 +109,7 @@ const NavWrapper = styled.div`
 const SubHeadingWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 5px;
 `
 
 const StyledPagination = styled.div`

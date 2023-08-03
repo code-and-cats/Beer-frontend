@@ -46,11 +46,14 @@ const StyledMain = styled.main`
   bottom: 0;
 `
 const StyledWrapper = styled.div`
-  max-width: 600px;
+  max-width: 375px;
   margin: auto;
   background-color: rgba(255, 255, 255, 0.5);
   padding: 10px;
   border-radius: 8px;
+
+  @media (min-width: 740px) {
+    max-width: 600px;
 `
 
 const StyledLi = styled.li`
