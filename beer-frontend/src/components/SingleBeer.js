@@ -94,7 +94,7 @@ const SingleBeer = () => {
             </BeerStyle>
           </IBUABVWrapper>
         </HeaderWrapper>
-        <TextWrapper>
+        <SubHeadingWrapper>
           <SubHeading
             onClick={() => handlePopupClick('Impression', impression)}>
             Impression
@@ -122,7 +122,7 @@ const SingleBeer = () => {
             onClick={() => handlePopupClick('Ingredients', ingredients)}>
             Ingredients
           </SubHeading>
-        </TextWrapper>
+        </SubHeadingWrapper>
         <TextWrapper>
           <h3>Examples</h3>
           <ul>
@@ -177,6 +177,13 @@ const SubHeading = styled.h3`
 
 const TextWrapper = styled.div`
   background-color: rgba(243, 235, 212, 0.8);
+  padding: 15px;
+  border-radius: 8px;
+`
+const SubHeadingWrapper = styled.div`
+  background-color: rgba(243, 235, 212, 0.8);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   padding: 15px;
   border-radius: 8px;
 `
