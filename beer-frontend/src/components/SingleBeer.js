@@ -15,7 +15,9 @@ const SingleBeer = () => {
   useEffect(() => {
     const fetchBeerDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/beers/${id}`)
+        const response = await fetch(
+          `https://project-mongo-api-rrnpfp2gjq-lz.a.run.app/beers/${id}`
+        )
         if (response.ok) {
           const data = await response.json()
           console.log(data)
