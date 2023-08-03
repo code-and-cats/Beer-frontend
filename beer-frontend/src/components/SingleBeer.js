@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import { styled } from 'styled-components'
 import { useParams } from 'react-router-dom'
+import back from './hopsleftwhite.svg'
 import Loading from './Loading'
 import Popup from './Popup'
 
@@ -76,7 +77,10 @@ const SingleBeer = () => {
         </Overlay>
       )}
       <StyledWrapper>
-        <NavLink to="/beers">Back to all beers</NavLink>
+        <NavWrapper>
+          <NavIcon src={back} alt="back to all beers" />
+          <NavLink to="/beers">hop back to all beers</NavLink>
+        </NavWrapper>
         {loading ? (
           <LottieDiv>
             <Loading />
@@ -144,6 +148,18 @@ const StyledMain = styled.main`
   bottom: 0;
 `
 
+const NavIcon = styled.img`
+  width: 25px;
+  cursor: pointer;
+`
+
+const NavWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+`
+
 const HeaderWrapper = styled.div`
   text-align: center;
   color: #a62f03;
@@ -159,7 +175,7 @@ const BeerName = styled.h1`
 `
 
 const BeerStyle = styled.h2`
-  font-size: 12px;
+  font-size: 14px;
   margin-top: 0;
 `
 
