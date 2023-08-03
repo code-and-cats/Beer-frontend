@@ -42,6 +42,7 @@ const AllBeers = () => {
         </LottieDiv>
       ) : null}
       <StyledWrapper>
+        <NavLink to="/">Back to main</NavLink>
         <StyledH1>All beers</StyledH1>
         {beers.map((beer) => (
           <div key={beer.name}>
@@ -70,7 +71,7 @@ const StyledMain = styled.main`
 `
 
 const StyledH1 = styled.h1`
-  margin-top: 0;
+  margin-top: 10px;
   font-size: 40px;
   margin-bottom: 16px;
 `
