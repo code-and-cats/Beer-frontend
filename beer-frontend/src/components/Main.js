@@ -31,8 +31,7 @@ const Main = () => {
           </StyledLi>
         </ul>
         <NavLink to="/beers">
-          Or you can stay right here and see a list of all beers, name and
-          style, without a nice background.
+          Or you can stay right here and see a list of all beers.
         </NavLink>
       </StyledWrapper>
     </StyledMain>
