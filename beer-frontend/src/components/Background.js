@@ -1,17 +1,19 @@
 import React from 'react'
 import backgroundVid from './background.mp4'
-import Lottie from 'lottie-react'
 import { styled } from 'styled-components'
-import bubbles from './Lotties/bubbles.json'
 
 const VideoWrapper = styled.video`
-  max-width: 100vw;
-  object-fit: contain;
+  display: block;
+  height: 100vh;
+  object-fit: cover;
   object-position: center;
   overflow: hidden;
+
+  @media (min-width: 1624px) {
+    width: 140vw;
 `
 const Background = () => {
-  return <Lottie style={{ height: '100wh' }} animationData={bubbles} />
+  return <VideoWrapper src={backgroundVid} autoPlay loop muted />
 }
 
 export default Background
